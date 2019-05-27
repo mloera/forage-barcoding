@@ -27,7 +27,7 @@ for r in SeqIO.parse(infasta, 'fasta'):
 
         family = r.description.split('|')[-2]
         
-        species = '_'.join(r.description.split('|')[-1].split('_')[:2])
+        species = '_'.join(r.description.split('|')[-1].split(' ')[:2])
 
         
 
