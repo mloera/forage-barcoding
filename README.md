@@ -21,10 +21,23 @@ stringr 1.4.0
 ## Step 1: Downloading sequences from BOLD
 Poaceae and Fabaceae sequences for barcodes <i>matK</i>, <i>rbcLa</i>, and <i>trnH-psbA</i> were downloaded from BOLD v4. Only sequences without reported contaminants and with sequence length > 200 bp were downloaded.
 
+The downloaded fasta files are located in the docs folder:
+
+1. docs/matK-may2019.fas
+2. docs/rbcLa-may2019.fas
+3. docs/trnH-psbA-may2019.fas
+
 ## Step 1: Re-formatting the headers of BOLD sequences
 This step is meant to reformat the headers of the downloaded BOLD sequences in order to have them in a blastn-friendly configuration (i.e., no spaces). The fasta_name_reformat.py script found in this repository was used for this purpose:
 
 <code>python fasta_name_reformat.py barcode.fasta > barcode.reformatted.fasta</code>
+
+The reformatted fasta files are also located in the docs folder:
+
+1. docs/matK-shname-may2019.SWFRG.fas
+2. docs/rbcLa-shname-may2019.SWFRG.fas
+3. docs/trnH-psbA-shname-may2019.SWFRG.fas
+
 
 ## Step 2: blastn
 A blast database was built for each reformatted fasta file.
@@ -47,5 +60,11 @@ blastn -query ${BCODE}-shname-may2019.SWFRG.fas \
   -out ${BCODE}.blastn.SWFRG; 
 done;</code>
 
+The blastn output tables are also located in the docs folder:
+
+1. docs/matK.blastn.SWFRG
+2. docs/rbcLa.blastn.SWFRG
+3. docs/trnH-psbA.blastn.SWFRG
+
 ## Step 3: Match calling on the SWFRG sequences
-The blast output tables were parsed with the blastn_matcher.R script. The script removes self-hits (i.e., blast hits between the same sequence ID), and also corrects some misspellings in the species name of queries and database hits. The script then compares the taxonomy of the query and the database hits at the species- and genus-level. A match is called when the taxonomy of a query sequence matches the taxonomy of the highest scoring hits.
+The blast output tables were parsed with the blastn_matcher.R script, ran on Rstudio. The script removes self-hits (i.e., blast hits between the same sequence ID), and also corrects some misspellings in the species name of queries and database hits. The script then compares the taxonomy of the query and the database hits at the species- and genus-level. A match is called when the taxonomy of a query sequence matches the taxonomy of the highest scoring hits.
