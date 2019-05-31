@@ -16,7 +16,7 @@ BioPython 1.68
 tidyverse 1.2.1,
 stringr 1.4.0
 
-### blastn+ 2.2.30
+### blast 2.2.30
 
 ## Step 1: Downloading sequences from BOLD
 Poaceae and Fabaceae sequences for barcodes <i>matK</i>, <i>rbcLa</i>, and <i>trnH-psbA</i> were downloaded from BOLD v4. Only sequences without reported contaminants and with sequence length > 200 bp were downloaded.
