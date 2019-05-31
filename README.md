@@ -29,7 +29,7 @@ This step is meant to reformat the headers of the downloaded BOLD sequences in o
 ## Step 2: blastn
 A blast database was built for each reformatted fasta file.
 
-<code>for BCODE in trnH-psbA matK rbcLa; do  \\
+<code>for BCODE in trnH-psbA matK rbcLa; do  \
 makeblastdb -in ${BCODE}.reformatted.fasta \
   -input_type fasta \
   -dbtype nucl \
