@@ -24,8 +24,28 @@ Poaceae and Fabaceae sequences for barcodes <i>matK</i>, <i>rbcLa</i>, and <i>tr
 ## Step 1: Re-formatting the headers of BOLD sequences
 This step is meant to reformat the headers of the downloaded BOLD sequences in order to have them in a blastn-friendly configuration (i.e., no spaces). The fasta_name_reformat.py script found in this repository was used for this purpose:
 
-<code>python fasta_name_reformat.py input.fasta > output.fasta</code>
-
+<code>python fasta_name_reformat.py barcode.fasta > barcode.reformatted.fasta</code>
 
 ## Step 2: blastn
+A blast database was built for each reformatted fasta file.
+
+<code>for BCODE in trnH-psbA matK rbcLa; do  \
+
+makeblastdb -in ${BCODE}.reformatted.fasta \
+  -input_type fasta \
+  -dbtype nucl \
+  -title ${BCODE} \
+  -out ${BCODE}.SWFRG; 
+done;</code>
+
+Then, each reformatted fasta file was blasted against its own blast database. The blast output files are in a tabular format (outfmt = 6).
+
+<code>for BCODE in trnH-psbA matK rbcLa; do \
+blastn -query ${BCODE}-shname-may2019.SWFRG.fas \
+  -db ${BCODE}.SWFRG  \
+  -max_target_seqs 5 \
+  -outfmt 6 \
+  -out ${BCODE}.blastn.SWFRG; 
+done;</code>
+
 ## Step 3: Match calling
