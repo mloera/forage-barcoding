@@ -34,7 +34,7 @@ data.df$QUERY.SPECIES <- gsub('Arrhenaterum_elatius', 'Arrhenatherum_elatius', d
 data.df$QUERY.SPECIES <- gsub('Festuca_pratense', 'Festuca_pratensis', data.df$QUERY.SPECIES)
 data.df$REF.SPECIES <- gsub('Arrhenaterum_elatius', 'Arrhenatherum_elatius', data.df$REF.SPECIES)
 data.df$REF.SPECIES <- gsub('Festuca_pratense', 'Festuca_pratensis', data.df$REF.SPECIES)
-data.df$REF.SPECIES <- gsub('Triflorum', 'Trifolium', data.df$REF.SPECIES)
+data.df$QUERY.SPECIES <- gsub('Triflorum', 'Trifolium', data.df$QUERY.SPECIES)
 data.df$REF.SPECIES <- gsub('Triflorum', 'Trifolium', data.df$REF.SPECIES)
 
 # MATCH CALULATOR: GENERAL ------------------------------------------------
