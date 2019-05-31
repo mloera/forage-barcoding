@@ -1,5 +1,5 @@
 ########################################################################################################################################
-# This script is meant to modify the name of each entry of the original BOLD-downloaded sequence headers.
+# This script is meant to reformat the name of each entry of the original BOLD-downloaded sequence headers.
 #
 # The BOLD-downloaded sequence headers have this format:
 # >SEQUENCE ID | TAXON | SAMPLE ID | FAMILY | SPECIES (with spaces)
@@ -11,7 +11,7 @@
 #>SEQUENCE ID | FAMILY | SPECIES (no spaces)
 #
 # Use as follows:
-# python fasta_renamer.py input.fasta > output.fasta
+# python fasta_name_reformat.py input.fasta > output.fasta
 ########################################################################################################################################
 
 #!/usr/bin/python
