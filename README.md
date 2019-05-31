@@ -13,7 +13,7 @@ This workflow was used to analyze the DNA barcoding data from 16 forage plant sp
 BioPython 1.68
 
 ### R version 3.5.1 (2018-07-02)
-tidyverse 1.2.1
+tidyverse 1.2.1,
 stringr 1.4.0
 
 ### blastn+ 2.2.30
