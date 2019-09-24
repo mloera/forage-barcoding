@@ -7,7 +7,7 @@ library(stringr)
 # DATA LOADING ------------------------------------------------------------
 
 # 1. OPENING THE BLASTN RESULTS TABLE (outfmt = 6); ONLY COLUMNS 1,2 3, AND 12 ARE SELECTED
-data.df <- read.csv("blastn.output.table", sep = "\t", header = F) %>% select(V1, V2, V3, V12)
+data.df <- read.csv("barcode.blastn.SWFRG", sep = "\t", header = F) %>% select(V1, V2, V3, V12)
 
 # 2. SETTING THE ACTUAL NAME FOR THE COLUMNS
 colnames(data.df) <- c("QUERY", "REF", "PID", "SCORE")
