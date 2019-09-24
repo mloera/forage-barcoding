@@ -6,6 +6,17 @@ library(stringr)
 
 # DATA LOADING ------------------------------------------------------------
 
+### PRELIMINARY: PROVE THAT AMMOUNT OF HIGHEST SCORING HITS IS LOWER THAN THE MAXIMUM NUMBER OF BLAST HITS REPORTED
+### (NECESSARY TO UNTIE RESULTS). IF THE RESULTING TIBBLE IS NON-EMPTY, TRY WITH A HIGHER VALUE OF max_target_seqs IN blastn
+
+data.df %>% 
+ 
+  filter("SWFRG" == str_sub(QUERY.SEQID, 1,5)) %>%
+  group_by(QUERY.SEQID) %>%
+  filter(SCORE == max(SCORE, na.rm = T)) %>%
+  summarise(HIGH.SCORING.HITS = n()) %>% filter(HIGH.SCORING.HITS == 5) 
+
+
 # 1. OPENING THE BLASTN RESULTS TABLE (outfmt = 6); ONLY COLUMNS 1,2 3, AND 12 ARE SELECTED
 data.df <- read.csv("barcode.blastn.SWFRG", sep = "\t", header = F) %>% select(V1, V2, V3, V12)
 
