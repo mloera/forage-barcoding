@@ -34,9 +34,9 @@ This step is meant to reformat the headers of the downloaded BOLD sequences in o
 
 The reformatted fasta files are also located in the docs folder:
 
-1. docs/matK-shname-may2019.SWFRG.fas
-2. docs/rbcLa-shname-may2019.SWFRG.fas
-3. docs/trnH-psbA-shname-may2019.SWFRG.fas
+1. docs/matK-shname.SWFRG.fas
+2. docs/rbcLa-shname.SWFRG.fas
+3. docs/trnH-psbA-shname.SWFRG.fas
 
 
 ## Step 2: blastn
@@ -50,10 +50,16 @@ makeblastdb -in ${BCODE}.reformatted.fasta \
   -out ${BCODE}.SWFRG; 
 done;</code>
 
-Then, each reformatted fasta file was blasted against its own blast database with the flag max_target_seqs = 5. The blast output files are in a tabular format (outfmt = 6).
+Then, a fasta file was created for the SWFRG sequences of each barcode. 
 
 <code>for BCODE in trnH-psbA matK rbcLa; do \
-blastn -query ${BCODE}-shname-may2019.SWFRG.fas \
+ 
+ grep -A1 'SWFRG' ${BCODE}-shname.fas > ${BCODE}.SWFRG.only.fasta
+
+Each SWFRG fasta file was then blasted against its corresponding blast database with the flag max_target_seqs = 5. The blast output files are in a tabular format (outfmt = 6).
+
+<code>for BCODE in trnH-psbA matK rbcLa; do \
+blastn -query ${BCODE}.SWFRG.only.fasta \
   -db ${BCODE}.SWFRG  \
   -max_target_seqs 5 \
   -outfmt 6 \
