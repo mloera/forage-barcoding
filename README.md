@@ -54,7 +54,7 @@ Then, a fasta file was created for the SWFRG sequences of each barcode.
 
 <code>for BCODE in trnH-psbA matK rbcLa; do \
  
- grep -A1 'SWFRG' ${BCODE}-shname.fas > ${BCODE}.SWFRG.only.fasta
+ grep -A1 'SWFRG' ${BCODE}-shname.fas > ${BCODE}.SWFRG.only.fasta</code>
 
 Each SWFRG fasta file was then blasted against its corresponding blast database with the flag max_target_seqs = 5. The blast output files are in a tabular format (outfmt = 6).
 
