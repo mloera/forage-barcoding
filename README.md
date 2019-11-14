@@ -30,7 +30,7 @@ The downloaded fasta files are located in the docs folder:
 ## Step 1: Re-formatting the headers of BOLD sequences
 This step is meant to reformat the headers of the downloaded BOLD sequences in order to have them in a blastn-friendly configuration (i.e., no spaces). The fasta_name_reformat.py script found in this repository was used for this purpose:
 
-<code>python fasta_name_reformat.py barcode.fasta > barcode.reformatted.fasta</code>
+<code>python fasta_name_reformat.py barcode.fasta > barcode-shname.fasta</code>
 
 The reformatted fasta files are also located in the docs folder:
 
@@ -43,7 +43,7 @@ The reformatted fasta files are also located in the docs folder:
 A blast database was built for each reformatted fasta file.
 
 <code>for BCODE in trnH-psbA matK rbcLa; do  \
-makeblastdb -in ${BCODE}.reformatted.fasta \
+makeblastdb -in ${BCODE}-shname.fasta \
   -input_type fasta \
   -dbtype nucl \
   -title ${BCODE} \
